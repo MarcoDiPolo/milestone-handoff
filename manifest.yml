@@ -1,0 +1,16 @@
+modules:
+  jira:issuePanel:
+    - key: milestone-handoff-panel
+      title: Milestone Handoff
+      resource: handoff
+      icon: resource:handoff;icon.svg
+resources:
+  - key: handoff
+    path: static
+permissions:
+  scopes:
+    - read:jira-work
+app:
+  runtime:
+    name: nodejs24.x
+  id: ari:cloud:ecosystem::app/8ca311b3-7792-4e41-82b8-735bdb8c3aaa

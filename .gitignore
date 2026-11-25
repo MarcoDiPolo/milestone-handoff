@@ -1,0 +1,5 @@
+node_modules/
+static/panel.bundle.js
+presentation/
+.env
+.env.*

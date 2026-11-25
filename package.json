@@ -1,0 +1,15 @@
+{
+  "name": "milestone-handoff",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/panel.js --bundle --format=iife --target=es2022 --outfile=static/panel.bundle.js",
+    "test": "node --test src/handoff.test.js"
+  },
+  "dependencies": {
+    "@forge/bridge": "7.4.0",
+    "@forge/cli": "14.2.0",
+    "esbuild": "0.28.2"
+  }
+}
