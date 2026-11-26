@@ -8,6 +8,7 @@
     "test": "node --test src/handoff.test.js"
   },
   "dependencies": {
+    "@forge/api": "8.5.1",
     "@forge/bridge": "7.4.0",
     "@forge/cli": "14.2.0",
     "esbuild": "0.28.2"

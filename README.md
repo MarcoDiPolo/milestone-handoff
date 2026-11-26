@@ -12,6 +12,8 @@ An unreturned link collection or an unavailable prerequisite status can leave th
 
 ## How it works
 
+On a site with Rovo enabled, click **Ask Rovo for this handoff** in the issue panel. You can also choose **Milestone Handoff Reader** in the Rovo Chat agents directory and ask “Prepare a handoff for TEAM-17” using a work item you can open. The agent reads that key through Forge as the current Jira user. It reports the recorded due date, status and visible blocking issues. It returns up to twelve prerequisites, puts open items first and counts any omitted entries. For renamed relationships use the issue panel to select the directions for this handoff. The panel's checkbox selections stay in that panel.
+
 A Forge Custom UI panel requests the current issue through the browser bridge. It selects four fields in one Jira REST request: summary, status, due date and issue links. The app builds its checklist from the linked summaries and status categories already in the response. The manifest declares one Jira scope, `read:jira-work`. [How the Forge bridge uses the current user's permissions](https://developer.atlassian.com/platform/forge/apis-reference/ui-api-bridge/requestJira/)
 
 ## Build and test
@@ -24,7 +26,7 @@ npm test
 npm run build
 ~~~
 
-The build writes `static/panel.bundle.js`. Five Node.js tests cover relationship direction, renamed relationships, absent fields, current-user requests and permissions errors. Test fixtures use invented issue data.
+The build writes `static/panel.bundle.js`. The Node.js tests cover relationship direction, renamed relationships, absent fields, current-user requests, permission errors and the Rovo action's input and evidence limits. Test fixtures use invented issue data.
 
 To run your own copy, follow the [Forge getting-started guide](https://developer.atlassian.com/platform/forge/getting-started/). The manifest includes the original app's public identifier. Register your copy with Forge under your own account before deploying to a Jira Cloud test site you administer. Run `npx forge lint`, `npx forge deploy` and `npx forge install`, then open the panel on a work item. [Forge register command](https://developer.atlassian.com/platform/forge/cli-reference/register/)
 

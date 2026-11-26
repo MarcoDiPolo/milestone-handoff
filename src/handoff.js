@@ -3,6 +3,10 @@ export const issueFields="summary,status,duedate,issuelinks";
 export async function loadMilestone(issueKey,requestJira) {
   if (typeof issueKey!=="string" || !issueKey.trim()) throw Error("Open the panel inside a Jira work item.");
   const response=await requestJira("/rest/api/3/issue/"+encodeURIComponent(issueKey)+"?fields="+issueFields);
+  return readJiraIssue(response);
+}
+
+export async function readJiraIssue(response) {
   if (!response.ok) {
     if ([401,403,404].includes(response.status)) throw Error("Jira could not share this work item with the current user.");
     throw Error("Jira could not load this work item (HTTP "+response.status+").");

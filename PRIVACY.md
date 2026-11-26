@@ -1,6 +1,6 @@
 # Milestone Handoff privacy notice
 
-Effective 25 November 2026. This notice applies to the Milestone Handoff Forge app for Jira Cloud, maintained by Marc SEB.
+Effective 26 November 2026. This notice applies to the Milestone Handoff Forge app for Jira Cloud, maintained by Marc SEB.
 
 ## Data used in Jira
 
@@ -8,7 +8,9 @@ When you open or refresh the issue panel, Forge supplies the current work-item c
 
 ## Processing, storage and retention
 
-The panel processes the response in browser memory. Its relationship choices stay in that panel instance. Closing the panel instance clears the app's in-memory state. Milestone Handoff has no app database or backend function, makes no changes to Jira and sends no issue content to the maintainer or any external service. Its code sets no cookies, uses no browser storage and adds no analytics. The app does not sell data.
+The panel processes the response in browser memory. Its relationship choices stay in that panel instance. Closing the panel instance clears the app's in-memory state.
+
+If you choose Milestone Handoff Reader in Rovo Chat and ask for a handoff, Rovo sends the requested issue key to a Forge function. The function reads the same four fields as the current Jira user. It returns the issue title, status, due date and visible prerequisite evidence to Atlassian Rovo for the reply. Rovo processes the conversation under your organisation's Atlassian settings. The function stores no records and writes no issue information to app logs. The app makes no changes to Jira. It uses no external endpoints or app database, sets no cookies and adds no analytics. The maintainer does not receive or sell issue data.
 
 Your organisation continues to manage the original Jira records and who can access them. Atlassian provides Jira and the Forge infrastructure under its own terms and may process operational data for those services. Uninstalling this app leaves Jira's records under the site's control. Contact your Jira site administrator for requests about access, correction or deletion of those records. [Atlassian privacy policy](https://www.atlassian.com/legal/privacy-policy)
 

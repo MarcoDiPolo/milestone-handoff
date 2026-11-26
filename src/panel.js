@@ -1,4 +1,4 @@
-import {requestJira,view} from "@forge/bridge";
+import {requestJira,rovo,view} from "@forge/bridge";
 import {defaultBlockers,handoff,loadMilestone,visibleLinks} from "./handoff.js";
 const get=id=>document.getElementById(id);
 let issue, selected=new Set(), revision=0;
@@ -39,4 +39,23 @@ async function refresh(){
     get("status").textContent="";get("detail").hidden=false;update();
   }catch(error){if(ticket===revision){get("title").textContent="Work item unavailable";get("status").textContent=error.message;}}
 }
+const askReader = get("ask-reader");
+rovo.isEnabled().then(enabled => { askReader.hidden = !enabled; }).catch(() => {});
+askReader.addEventListener("click", async () => {
+  if (!issue || askReader.disabled) return;
+  askReader.disabled = true;
+  get("agent-status").textContent = "";
+  try {
+    await rovo.open({
+      type: "forge",
+      agentName: "Milestone Handoff Reader",
+      agentKey: "milestone-handoff-reader",
+      prompt: "Prepare a handoff for " + issue.key + " using its recorded status, due date and visible prerequisites."
+    });
+  } catch {
+    get("agent-status").textContent = "Rovo could not open. You can find Milestone Handoff Reader in the Rovo agents directory.";
+  } finally {
+    askReader.disabled = false;
+  }
+});
 get("refresh").addEventListener("click",refresh);refresh();
